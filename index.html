@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فرم جامع نیازسنجی اپلیکیشن دستگاه</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--p:#2563eb;--p2:#1d4ed8;--soft:#eff6ff;--ok:#059669}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.85}
+.wrap{max-width:900px;margin:auto;padding:20px 12px 50px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(15,23,42,.06)}
+h1{font-size:24px;margin:0 0 8px}h2{font-size:20px;margin:0 0 6px}h3{font-size:16px;margin:0}.muted{color:var(--muted);font-size:14px}
+.badge{display:inline-block;background:var(--soft);color:#1d4ed8;border-radius:999px;padding:3px 10px;font-size:12px;margin-bottom:8px}
+.notice{padding:13px 15px;border-radius:13px;background:#fffbeb;border:1px solid #fde68a;color:#7c4a03;font-size:14px;margin:14px 0}
+.progress{height:9px;background:#e9eef6;border-radius:99px;overflow:hidden;margin:18px 0 8px}.progress>div{height:100%;background:var(--p);transition:.25s}
+.step{display:none}.step.active{display:block}.lead{padding:12px 14px;background:#f8fafc;border-radius:12px;border:1px solid var(--line);margin:12px 0 18px;color:#475467}
+.q{margin:17px 0;padding:16px;border:1px solid var(--line);border-radius:15px;background:#fcfdff}.qt{font-weight:700;display:block;margin-bottom:3px}.help{display:block;color:var(--muted);font-size:13px;margin-bottom:9px}
+.opts{display:grid;gap:6px}.opt{display:flex;gap:9px;align-items:flex-start;padding:7px 8px;border-radius:9px}.opt:hover{background:#f3f6fb}
+input[type=radio],input[type=checkbox]{margin-top:8px;transform:scale(1.12)}
+input[type=text],textarea,select{width:100%;border:1px solid #cfd5df;border-radius:10px;padding:10px 12px;font:inherit;color:var(--text);background:#fff}textarea{min-height:80px;resize:vertical}
+.note{margin-top:11px;padding-top:11px;border-top:1px dashed #d0d5dd}.note label{font-size:13px;color:#475467;display:block;margin-bottom:5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.feature{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fff}.feature p{font-size:13px;color:var(--muted);margin:5px 0 10px}.featureTop{display:flex;gap:8px;align-items:flex-start}.priority{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:center}
+.actions{display:flex;gap:9px;justify-content:space-between;flex-wrap:wrap;margin-top:22px}button{border:0;border-radius:11px;padding:11px 17px;font:inherit;font-weight:700;cursor:pointer}.primary{background:var(--p);color:#fff}.primary:hover{background:var(--p2)}.secondary{background:#eef2f7;color:#263244}.success{background:var(--ok);color:white}.tg{background:#229ED9;color:white}.warn{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
+.hidden{display:none!important}.summary{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:15px;font-size:14px;max-height:520px;overflow:auto}.save{font-size:12px;color:var(--muted)}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.priority{grid-template-columns:1fr}.card{padding:15px}.wrap{padding:9px 7px 30px}h1{font-size:21px}.actions button{flex:1}}
+@media print{body{background:#fff}.actions,.progress,#counter,.notice,.save{display:none!important}.step{display:block!important}.card{box-shadow:none;border:0}.wrap{max-width:none}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<div><span class="badge">نیازسنجی فنی و محصول</span><h1>فرم جامع نسخه جدید اپلیکیشن دستگاه</h1></div>
+<p class="muted">هدف این فرم مشخص شدن دقیق نیازهای نسخه جدید، مشکلات فعلی و امکانات موردنظر است. هرجا اطلاعات کافی ندارید می‌توانید همان مورد را خالی بگذارید یا بنویسید نیاز به بررسی دارد.</p>
+<div class="notice">تکمیل این فرم به‌معنی تعیین قیمت نهایی نیست. بعد از بررسی پاسخ‌ها، محدوده نسخه اول، امکانات اختیاری، زمان اجرا و هزینه به‌صورت جداگانه جمع‌بندی می‌شود.</div>
+<div class="save" id="saveState">پاسخ‌ها به‌صورت خودکار روی همین دستگاه ذخیره می‌شوند.</div>
+<div class="progress"><div id="bar"></div></div><div class="muted" id="counter"></div>
+<form id="form">
+
+<section class="step active" data-title="اطلاعات کلی">
+<h2>۱) اطلاعات کلی پروژه</h2><div class="lead">اول می‌خواهیم دقیق بدانیم دستگاه برای چه کاری استفاده می‌شود و کاربر چه نتیجه‌ای از برنامه انتظار دارد.</div>
+<div class="q"><label class="qt">کاربرد اصلی دستگاه دقیقاً چیست؟</label><span class="help">مثلاً اسکن زمین، شناسایی فلز، تشخیص حفره، بررسی زیرسطح قبل از حفاری یا کاربرد دیگر.</span><textarea name="device_purpose" data-label="کاربرد اصلی دستگاه" placeholder="کاربرد دستگاه را با زبان خودتان توضیح دهید"></textarea><div class="note"><label>توضیح تکمیلی / مثال واقعی</label><textarea name="device_purpose_note" data-label="توضیح تکمیلی کاربرد دستگاه" placeholder="مثلاً کاربر چطور دستگاه را حرکت می‌دهد و چه نتیجه‌ای انتظار دارد؟"></textarea></div></div>
+<div class="q"><label class="qt">کاربران اصلی برنامه چه کسانی هستند؟</label><div class="opts">
+<label class="opt"><input type="checkbox" name="users" data-label="کاربران اصلی" value="اپراتور حرفه‌ای دستگاه">اپراتور حرفه‌ای دستگاه</label>
+<label class="opt"><input type="checkbox" name="users" data-label="کاربران اصلی" value="مشتری عادی دستگاه">مشتری عادی دستگاه</label>
+<label class="opt"><input type="checkbox" name="users" data-label="کاربران اصلی" value="تکنسین یا نصاب">تکنسین یا نصاب</label>
+<label class="opt"><input type="checkbox" name="users" data-label="کاربران اصلی" value="نمایندگی یا فروشنده">نمایندگی یا فروشنده</label>
+<label class="opt"><input type="checkbox" name="users" data-label="کاربران اصلی" value="استفاده داخلی مجموعه">استفاده داخلی مجموعه</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="users_note" data-label="توضیح کاربران" placeholder="اگر سطح مهارت کاربران یا گروه دیگری مهم است توضیح دهید"></textarea></div></div>
+<div class="q"><label class="qt">آیا دستگاه چند مدل یا نسخه مختلف دارد؟</label><div class="opts">
+<label class="opt"><input type="radio" name="device_models" data-label="مدل‌های دستگاه" value="فقط یک مدل">فقط یک مدل</label>
+<label class="opt"><input type="radio" name="device_models" data-label="مدل‌های دستگاه" value="چند مدل با عملکرد مشابه">چند مدل با عملکرد مشابه</label>
+<label class="opt"><input type="radio" name="device_models" data-label="مدل‌های دستگاه" value="چند مدل با سنسور یا پروتکل متفاوت">چند مدل با سنسور یا پروتکل متفاوت</label>
+<label class="opt"><input type="radio" name="device_models" data-label="مدل‌های دستگاه" value="مطمئن نیستم">مطمئن نیستم</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="device_models_note" data-label="توضیح مدل‌ها" placeholder="نام مدل‌ها یا تفاوت اصلی آن‌ها را بنویسید"></textarea></div></div>
+</section>
+
+<section class="step" data-title="نسخه فعلی">
+<h2>۲) نسخه فعلی برنامه</h2><div class="lead">مشکلات واقعی نسخه فعلی مهم‌اند؛ چون باید در نسخه جدید از ابتدا برای رفع آن‌ها طراحی کنیم.</div>
+<div class="q"><label class="qt">سورس‌کد نسخه قدیمی در دسترس است؟</label><div class="opts">
+<label class="opt"><input type="radio" name="old_source" data-label="وضعیت سورس قدیمی" value="سورس کامل موجود است">سورس کامل موجود است</label>
+<label class="opt"><input type="radio" name="old_source" data-label="وضعیت سورس قدیمی" value="بخشی از سورس موجود است">بخشی از سورس موجود است</label>
+<label class="opt"><input type="radio" name="old_source" data-label="وضعیت سورس قدیمی" value="فقط APK موجود است">فقط APK موجود است</label>
+<label class="opt"><input type="radio" name="old_source" data-label="وضعیت سورس قدیمی" value="مطمئن نیستم">مطمئن نیستم</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="old_source_note" data-label="توضیح سورس قدیمی" placeholder="اگر سورس نزد شخص یا شرکت دیگری است توضیح دهید"></textarea></div></div>
+<div class="q"><label class="qt">در نسخه فعلی چه مشکلاتی تجربه کرده‌اید؟</label><span class="help">هر موردی حتی اگر فقط گاهی اتفاق می‌افتد انتخاب کنید.</span><div class="opts">
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="قطع یا ناپایداری بلوتوث">قطع یا ناپایداری بلوتوث</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="تاخیر در دریافت یا نمایش اطلاعات">تاخیر در دریافت یا نمایش اطلاعات</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="کندی یا هنگ کردن">کندی یا هنگ کردن</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="مشکل ذخیره اسکن">مشکل ذخیره اسکن</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="مشکل باز کردن فایل‌های قبلی">مشکل باز کردن فایل‌های قبلی</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="مشکل نمایش سه‌بعدی">مشکل نمایش سه‌بعدی</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="مشکل هشدار صوتی یا لرزش">مشکل هشدار صوتی یا لرزش</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="مشکل روی گوشی‌های جدید">مشکل روی گوشی‌های جدید</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="ظاهر یا کاربری قدیمی">ظاهر یا کاربری قدیمی</label>
+<label class="opt"><input type="checkbox" name="issues" data-label="مشکلات نسخه فعلی" value="مشکل خاصی نداشتیم">مشکل خاصی نداشتیم</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="issues_note" data-label="توضیح مشکلات فعلی" placeholder="مثلاً مشکل در چه مرحله‌ای رخ می‌دهد و چقدر تکرار می‌شود؟"></textarea></div></div>
+<div class="q"><label class="qt">برنامه فعلی چطور به مشتری تحویل داده می‌شود؟</label><div class="opts">
+<label class="opt"><input type="checkbox" name="distribution" data-label="روش انتشار فعلی" value="فایل APK مستقیم">فایل APK مستقیم</label>
+<label class="opt"><input type="checkbox" name="distribution" data-label="روش انتشار فعلی" value="Google Play">Google Play</label>
+<label class="opt"><input type="checkbox" name="distribution" data-label="روش انتشار فعلی" value="مارکت دیگر">مارکت دیگر</label>
+<label class="opt"><input type="checkbox" name="distribution" data-label="روش انتشار فعلی" value="همراه خود دستگاه">همراه خود دستگاه</label>
+<label class="opt"><input type="checkbox" name="distribution" data-label="روش انتشار فعلی" value="اطلاع ندارم">اطلاع ندارم</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="distribution_note" data-label="توضیح انتشار فعلی" placeholder="اگر لینک یا روش نصب خاصی وجود دارد بنویسید"></textarea></div></div>
+</section>
+
+<section class="step" data-title="سخت‌افزار و ارتباط">
+<h2>۳) سخت‌افزار، سنسورها و پروتکل</h2><div class="lead">این اطلاعات برای سازگاری نسخه جدید با دستگاه واقعی و جلوگیری از خطا در دریافت داده ضروری‌اند.</div>
+<div class="q"><label class="qt">سنسورهای دستگاه چه چیزی را اندازه‌گیری یا شناسایی می‌کنند؟</label><textarea name="sensors" data-label="عملکرد سنسورها" placeholder="نام سنسور یا توضیح عملکرد آن"></textarea><div class="note"><label>توضیح تکمیلی</label><textarea name="sensors_note" data-label="توضیح سنسورها" placeholder="اگر خروجی سنسورها عدد، میدان، جهت، عمق یا مقدار دیگری است توضیح دهید"></textarea></div></div>
+<div class="q"><label class="qt">ارتباط دستگاه با برنامه از چه روشی انجام می‌شود؟</label><div class="opts">
+<label class="opt"><input type="checkbox" name="connection" data-label="روش ارتباط دستگاه" value="Bluetooth Classic">Bluetooth Classic</label>
+<label class="opt"><input type="checkbox" name="connection" data-label="روش ارتباط دستگاه" value="BLE">Bluetooth Low Energy (BLE)</label>
+<label class="opt"><input type="checkbox" name="connection" data-label="روش ارتباط دستگاه" value="Wi-Fi">Wi-Fi</label>
+<label class="opt"><input type="checkbox" name="connection" data-label="روش ارتباط دستگاه" value="USB">USB</label>
+<label class="opt"><input type="checkbox" name="connection" data-label="روش ارتباط دستگاه" value="مطمئن نیستم">مطمئن نیستم</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="connection_note" data-label="توضیح روش ارتباط" placeholder="نام ماژول، مدل بلوتوث یا هر اطلاعات فنی موجود را بنویسید"></textarea></div></div>
+<div class="q"><label class="qt">پروتکل ارتباط دستگاه در دسترس است؟</label><span class="help">منظور فرمت داده‌ها، فرمان‌های ارسالی برنامه و معنی بخش‌های داده دریافتی است.</span><div class="opts">
+<label class="opt"><input type="radio" name="protocol" data-label="وضعیت پروتکل" value="کامل موجود است">کامل موجود است</label>
+<label class="opt"><input type="radio" name="protocol" data-label="وضعیت پروتکل" value="بخشی از اطلاعات موجود است">بخشی از اطلاعات موجود است</label>
+<label class="opt"><input type="radio" name="protocol" data-label="وضعیت پروتکل" value="باید از سازنده یا طراح قبلی بگیرم">باید از سازنده یا طراح قبلی بگیرم</label>
+<label class="opt"><input type="radio" name="protocol" data-label="وضعیت پروتکل" value="در دسترس نیست">در دسترس نیست</label>
+<label class="opt"><input type="radio" name="protocol" data-label="وضعیت پروتکل" value="مطمئن نیستم">مطمئن نیستم</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="protocol_note" data-label="توضیح پروتکل" placeholder="اگر فایل، جدول یا توضیح فنی دارید بنویسید؛ فایل را جداگانه ارسال کنید"></textarea></div></div>
+<div class="q"><label class="qt">برای تست نسخه جدید، دسترسی به دستگاه واقعی چگونه خواهد بود؟</label><div class="opts">
+<label class="opt"><input type="radio" name="hardware_test" data-label="دسترسی به دستگاه برای تست" value="دستگاه در اختیار توسعه‌دهنده قرار می‌گیرد">دستگاه در اختیار توسعه‌دهنده قرار می‌گیرد</label>
+<label class="opt"><input type="radio" name="hardware_test" data-label="دسترسی به دستگاه برای تست" value="تست حضوری امکان‌پذیر است">تست حضوری امکان‌پذیر است</label>
+<label class="opt"><input type="radio" name="hardware_test" data-label="دسترسی به دستگاه برای تست" value="تست از راه دور با کمک مجموعه">تست از راه دور با کمک مجموعه</label>
+<label class="opt"><input type="radio" name="hardware_test" data-label="دسترسی به دستگاه برای تست" value="فعلاً امکان تست وجود ندارد">فعلاً امکان تست وجود ندارد</label></div>
+<div class="note"><label>توضیح تکمیلی</label><textarea name="hardware_test_note" data-label="توضیح دسترسی برای تست" placeholder="محل دستگاه، محدودیت زمان تست یا تعداد دستگاه‌ها"></textarea></div></div>
+<div class="q"><label class="qt">آیا فایل اسکن واقعی از نسخه قبلی دارید؟</label><div class="opts">
+<label class="opt"><input type="radio" name="legacy_scans" data-label="فایل‌های اسکن قدیمی" value="بله، چند فایل موجود است">بله، چند فایل موجود است</label>
+<label class="opt"><input type="radio" name="legacy_scans" data-label="فایل‌های اسکن قدیمی" value="داریم ولی باید پیدا شود">داریم ولی باید پیدا شود</label>
+<label class="opt"><input type="radio" name="legacy_scans" data-label="فایل‌های اسکن قدیمی" value="خیر">خیر</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="legacy_scans_note" data-label="توضیح فایل‌های اسکن" placeholder="تعداد تقریبی یا نوع فایل‌ها را بنویسید"></textarea></div></div>
+</section>
+
+<section class="step" data-title="امکانات فعلی">
+<h2>۴) قابلیت‌هایی که باید حفظ شوند</h2><div class="lead">مشخص کنید کدام قابلیت‌های نسخه قبلی باید حتماً در نسخه جدید باقی بمانند.</div>
+<div class="q"><label class="qt">قابلیت‌های ضروری نسخه جدید</label><div class="opts">
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="اتصال بلوتوث">اتصال بلوتوث</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="Live Scan">Live Scan</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="Ground Scan">Ground Scan</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="نمایش دوبعدی">نمایش دوبعدی</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="نمایش سه‌بعدی">نمایش سه‌بعدی</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="کالیبراسیون سنسورها">کالیبراسیون سنسورها</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="تنظیم حساسیت / Gain">تنظیم حساسیت / Gain</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="حالت یک و دو سنسور">حالت یک و دو سنسور</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="هشدار صوتی">هشدار صوتی</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="لرزش">لرزش</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="ذخیره و باز کردن اسکن">ذخیره و باز کردن اسکن</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="قطب‌نما">قطب‌نما</label>
+<label class="opt"><input type="checkbox" name="keep" data-label="قابلیت‌های فعلی ضروری" value="همه امکانات فعلی">همه امکانات فعلی</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="keep_note" data-label="توضیح قابلیت‌های فعلی" placeholder="اگر بخشی باید دقیقاً مثل قبل بماند یا حذف شود توضیح دهید"></textarea></div></div>
+<div class="q"><label class="qt">منطق فعلی پردازش داده، رنگ‌ها و نتیجه اسکن چه میزان باید حفظ شود؟</label><div class="opts">
+<label class="opt"><input type="radio" name="logic" data-label="سیاست حفظ منطق فعلی" value="دقیقاً مثل نسخه فعلی">دقیقاً مثل نسخه فعلی</label>
+<label class="opt"><input type="radio" name="logic" data-label="سیاست حفظ منطق فعلی" value="اصل منطق حفظ شود ولی قابل بهبود باشد">اصل منطق حفظ شود ولی قابل بهبود باشد</label>
+<label class="opt"><input type="radio" name="logic" data-label="سیاست حفظ منطق فعلی" value="بعضی قسمت‌ها باید تغییر کند">بعضی قسمت‌ها باید تغییر کند</label>
+<label class="opt"><input type="radio" name="logic" data-label="سیاست حفظ منطق فعلی" value="نیاز به بررسی مشترک دارد">نیاز به بررسی مشترک دارد</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="logic_note" data-label="توضیح منطق فعلی" placeholder="مثلاً معنی رنگ‌ها، حساسیت یا محاسباتی که نباید تغییر کنند"></textarea></div></div>
+</section>
+
+<section class="step" data-title="قابلیت‌های جدید">
+<h2>۵) قابلیت‌های جدید پیشنهادی</h2><div class="lead">برای هر قابلیت، در صورت تمایل تیک بزنید و اولویت را مشخص کنید. لازم نیست همه این موارد در نسخه اول اجرا شوند.</div>
+<div class="grid">
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="مدیریت حرفه‌ای اسکن‌ها"><div><h3>مدیریت حرفه‌ای اسکن‌ها</h3><p>نام، تاریخ، توضیح، جستجو، مرتب‌سازی و علامت‌گذاری اسکن‌های مهم به‌جای یک لیست ساده فایل.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_scan" data-label="اولویت مدیریت اسکن‌ها"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_scan" data-label="توضیح مدیریت اسکن‌ها" placeholder="چه اطلاعاتی برای هر اسکن ذخیره شود؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="نمودار زنده سنسورها"><div><h3>نمودار زنده سنسورها</h3><p>نمایش تغییرات سنسورها به‌صورت نمودار لحظه‌ای برای مشاهده دقیق‌تر رفتار داده‌ها.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_chart" data-label="اولویت نمودار زنده"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_chart" data-label="توضیح نمودار زنده" placeholder="چند سنسور یا چه نوع نموداری؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="هشدار قابل تنظیم"><div><h3>هشدار قابل تنظیم</h3><p>تنظیم آستانه هشدار، نوع صدا و لرزش برای شرایط مختلف سنسورها.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_alert" data-label="اولویت هشدار قابل تنظیم"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_alert" data-label="توضیح هشدارها" placeholder="هشدار خاصی مدنظر دارید؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="پروفایل‌های آماده تنظیمات"><div><h3>پروفایل‌های آماده تنظیمات</h3><p>ذخیره چند ترکیب آماده برای حساسیت، Gain، نوع زمین یا سایر تنظیمات و فعال‌سازی سریع آن‌ها.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_profiles" data-label="اولویت پروفایل‌ها"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_profiles" data-label="توضیح پروفایل‌ها" placeholder="چه پروفایل‌هایی لازم دارید؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="سه‌بعدی پیشرفته‌تر"><div><h3>نمایش سه‌بعدی پیشرفته‌تر</h3><p>کنترل بهتر زاویه دید، زوم، فیلتر رنگ، شبکه و ابزارهای بیشتر برای بررسی اسکن.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_3d" data-label="اولویت سه‌بعدی پیشرفته"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_3d" data-label="توضیح سه‌بعدی" placeholder="در 3D فعلی چه چیزی باید بهتر شود؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="مقایسه دو اسکن"><div><h3>مقایسه دو اسکن</h3><p>نمایش دو اسکن کنار هم یا روی هم برای مشاهده تفاوت‌ها و تغییرات.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_compare" data-label="اولویت مقایسه اسکن"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_compare" data-label="توضیح مقایسه اسکن" placeholder="نحوه مقایسه موردنظر"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="خروجی و گزارش"><div><h3>خروجی و گزارش اسکن</h3><p>گرفتن تصویر، CSV یا PDF از نتیجه اسکن برای ذخیره، چاپ یا ارسال.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_export" data-label="اولویت خروجی و گزارش"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_export" data-label="توضیح خروجی و گزارش" placeholder="چه نوع خروجی مهم‌تر است؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="یادداشت‌گذاری روی اسکن"><div><h3>یادداشت و علامت‌گذاری</h3><p>نوشتن توضیح برای هر اسکن یا علامت‌گذاری نقاط مهم برای بررسی بعدی.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_notes" data-label="اولویت یادداشت‌گذاری"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_notes" data-label="توضیح یادداشت‌گذاری" placeholder="متن، علامت روی نقشه یا هر دو؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="عیب‌یابی دستگاه و بلوتوث"><div><h3>عیب‌یابی دستگاه و بلوتوث</h3><p>نمایش وضعیت اتصال، دریافت داده، سنسورها و خطاهای ارتباطی برای تشخیص سریع‌تر مشکل.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_diag" data-label="اولویت عیب‌یابی"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_diag" data-label="توضیح عیب‌یابی" placeholder="چه خطاهایی بیشتر دردسر ایجاد می‌کنند؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="Dark Mode"><div><h3>تم تاریک و ظاهرهای مختلف</h3><p>حالت تاریک و رنگ‌بندی مناسب برای استفاده راحت‌تر در محیط تاریک یا فضای بیرون.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_theme" data-label="اولویت تم تاریک"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_theme" data-label="توضیح تم" placeholder="رنگ سازمانی یا تم خاص؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="Backup / Restore"><div><h3>Backup / Restore</h3><p>پشتیبان‌گیری از اسکن‌ها و تنظیمات و بازیابی آن‌ها روی گوشی جدید یا بعد از نصب مجدد.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_backup" data-label="اولویت پشتیبان‌گیری"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_backup" data-label="توضیح پشتیبان‌گیری" placeholder="آفلاین کافی است یا فضای ابری هم لازم است؟"></textarea></div></div>
+
+<div class="feature"><div class="featureTop"><input type="checkbox" name="new_feature" data-label="قابلیت‌های جدید منتخب" value="چندزبانه استاندارد"><div><h3>چندزبانه استاندارد</h3><p>انتخاب زبان از داخل برنامه و آماده بودن ساختار برای افزودن زبان‌های جدید.</p></div></div><div class="priority"><label>اولویت</label><select name="prio_lang" data-label="اولویت چندزبانه"><option value="">انتخاب کنید</option><option>ضروری برای نسخه اول</option><option>مهم ولی قابل تعویق</option><option>برای آینده</option></select></div><div class="note"><label>توضیح شما</label><textarea name="note_lang" data-label="توضیح زبان‌ها" placeholder="زبان‌های موردنیاز"></textarea></div></div>
+
+</div>
+<div class="q"><label class="qt">قابلیت جدید دیگری مدنظر دارید؟</label><textarea name="custom_feature" data-label="قابلیت جدید دیگر" placeholder="هر ایده یا قابلیت خاصی که در لیست نبود"></textarea><div class="note"><label>توضیح تکمیلی</label><textarea name="custom_feature_note" data-label="توضیح قابلیت جدید دیگر" placeholder="چرا این قابلیت مهم است و کاربر چطور از آن استفاده می‌کند؟"></textarea></div></div>
+<div class="q"><label class="qt">اگر فقط سه قابلیت جدید برای نسخه اول انتخاب کنید، کدام‌ها مهم‌ترند؟</label><textarea name="top3" data-label="سه اولویت اصلی نسخه اول" placeholder="۱) ...  ۲) ...  ۳) ..."></textarea><div class="note"><label>توضیح تکمیلی</label><textarea name="top3_note" data-label="دلیل اولویت‌ها" placeholder="اگر دلیل خاصی برای اولویت‌ها دارید بنویسید"></textarea></div></div>
+</section>
+
+<section class="step" data-title="طراحی و تجربه کاربری">
+<h2>۶) ظاهر، زبان و تجربه کاربری</h2><div class="lead">نسخه جدید باید هم حرفه‌ای و مدرن باشد و هم کار با آن برای اپراتور ساده و سریع بماند.</div>
+<div class="q"><label class="qt">جهت طراحی نسخه جدید را کدام حالت ترجیح می‌دهید؟</label><div class="opts">
+<label class="opt"><input type="radio" name="design" data-label="جهت طراحی" value="کاملاً جدید و مدرن">کاملاً جدید و مدرن</label>
+<label class="opt"><input type="radio" name="design" data-label="جهت طراحی" value="شبیه نسخه فعلی ولی حرفه‌ای‌تر">شبیه نسخه فعلی ولی حرفه‌ای‌تر</label>
+<label class="opt"><input type="radio" name="design" data-label="جهت طراحی" value="ساختار آشنا با ظاهر جدید">ساختار آشنا با ظاهر جدید</label>
+<label class="opt"><input type="radio" name="design" data-label="جهت طراحی" value="طراحی به پیشنهاد توسعه‌دهنده">طراحی به پیشنهاد توسعه‌دهنده</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="design_note" data-label="توضیح طراحی" placeholder="اگر برنامه یا ظاهر خاصی را دوست دارید بنویسید"></textarea></div></div>
+<div class="q"><label class="qt">برنامه بیشتر روی چه دستگاه‌هایی استفاده می‌شود؟</label><div class="opts">
+<label class="opt"><input type="checkbox" name="target_devices" data-label="دستگاه‌های هدف" value="گوشی اندرویدی">گوشی اندرویدی</label>
+<label class="opt"><input type="checkbox" name="target_devices" data-label="دستگاه‌های هدف" value="تبلت اندرویدی">تبلت اندرویدی</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="target_devices_note" data-label="توضیح دستگاه‌های هدف" placeholder="مدل‌های رایج، اندازه صفحه یا نسخه اندروید"></textarea></div></div>
+<div class="q"><label class="qt">زبان‌های موردنیاز برنامه</label><div class="opts">
+<label class="opt"><input type="checkbox" name="languages" data-label="زبان‌های موردنیاز" value="فارسی">فارسی</label>
+<label class="opt"><input type="checkbox" name="languages" data-label="زبان‌های موردنیاز" value="انگلیسی">انگلیسی</label>
+<label class="opt"><input type="checkbox" name="languages" data-label="زبان‌های موردنیاز" value="عربی">عربی</label>
+<label class="opt"><input type="checkbox" name="languages" data-label="زبان‌های موردنیاز" value="ترکی">ترکی</label>
+<label class="opt"><input type="checkbox" name="languages" data-label="زبان‌های موردنیاز" value="زبان دیگر">زبان دیگر</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="languages_note" data-label="توضیح زبان‌ها" placeholder="نام زبان‌های دیگر یا اولویت زبان‌ها"></textarea></div></div>
+<div class="q"><label class="qt">آیا لوگو، رنگ سازمانی یا فایل گرافیکی برند دارید؟</label><div class="opts">
+<label class="opt"><input type="radio" name="branding" data-label="هویت بصری برند" value="بله، کامل موجود است">بله، کامل موجود است</label>
+<label class="opt"><input type="radio" name="branding" data-label="هویت بصری برند" value="فقط لوگو موجود است">فقط لوگو موجود است</label>
+<label class="opt"><input type="radio" name="branding" data-label="هویت بصری برند" value="هویت بصری مشخصی نداریم">هویت بصری مشخصی نداریم</label>
+<label class="opt"><input type="radio" name="branding" data-label="هویت بصری برند" value="طراحی را به شما می‌سپاریم">طراحی را به شما می‌سپاریم</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="branding_note" data-label="توضیح هویت بصری" placeholder="رنگ‌ها یا محدودیت‌های برند"></textarea></div></div>
+</section>
+
+<section class="step" data-title="انتشار و پشتیبانی">
+<h2>۷) انتشار، آپدیت و پشتیبانی</h2><div class="lead">این موارد روی نحوه تحویل، امکان نصب روی نسخه قدیمی و همکاری بعد از تحویل اثر دارند.</div>
+<div class="q"><label class="qt">نسخه جدید باید روی نسخه فعلی کاربران به‌صورت Update نصب شود؟</label><div class="opts">
+<label class="opt"><input type="radio" name="update_old" data-label="نصب به‌عنوان آپدیت" value="بله، حتماً">بله، حتماً</label>
+<label class="opt"><input type="radio" name="update_old" data-label="نصب به‌عنوان آپدیت" value="ترجیحاً بله">ترجیحاً بله</label>
+<label class="opt"><input type="radio" name="update_old" data-label="نصب به‌عنوان آپدیت" value="مهم نیست، می‌تواند اپ جدید باشد">مهم نیست، می‌تواند اپ جدید باشد</label>
+<label class="opt"><input type="radio" name="update_old" data-label="نصب به‌عنوان آپدیت" value="اطلاع ندارم">اطلاع ندارم</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="update_old_note" data-label="توضیح آپدیت" placeholder="اگر تعداد زیادی کاربر نسخه قبلی دارند توضیح دهید"></textarea></div></div>
+<div class="q"><label class="qt">به کلید امضای نسخه قبلی یا حساب انتشار آن دسترسی دارید؟</label><div class="opts">
+<label class="opt"><input type="radio" name="signing" data-label="دسترسی به کلید امضا" value="بله">بله</label>
+<label class="opt"><input type="radio" name="signing" data-label="دسترسی به کلید امضا" value="خیر">خیر</label>
+<label class="opt"><input type="radio" name="signing" data-label="دسترسی به کلید امضا" value="مطمئن نیستم">مطمئن نیستم</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="signing_note" data-label="توضیح کلید امضا" placeholder="اگر شخص یا شرکت دیگری این اطلاعات را دارد بنویسید"></textarea></div></div>
+<div class="q"><label class="qt">بعد از تحویل چه نوع پشتیبانی نیاز دارید؟</label><div class="opts">
+<label class="opt"><input type="radio" name="support" data-label="نوع پشتیبانی" value="فقط رفع ایرادهای دوره ضمانت">فقط رفع ایرادهای دوره ضمانت</label>
+<label class="opt"><input type="radio" name="support" data-label="نوع پشتیبانی" value="پشتیبانی ماهانه">پشتیبانی ماهانه</label>
+<label class="opt"><input type="radio" name="support" data-label="نوع پشتیبانی" value="پشتیبانی و توسعه مستمر">پشتیبانی و توسعه مستمر</label>
+<label class="opt"><input type="radio" name="support" data-label="نوع پشتیبانی" value="بعداً تصمیم می‌گیریم">بعداً تصمیم می‌گیریم</label></div><div class="note"><label>توضیح تکمیلی</label><textarea name="support_note" data-label="توضیح پشتیبانی" placeholder="رفع مشکل مشتری، تغییرات کوچک، توسعه قابلیت‌های بعدی و..."></textarea></div></div>
+<div class="q"><label class="qt">اگر زمان خاصی برای آماده شدن نسخه اول دارید، بنویسید.</label><input type="text" name="timeline" data-label="زمان موردنظر" placeholder="مثلاً قبل از نمایشگاه یا تا یک تاریخ مشخص"><div class="note"><label>توضیح تکمیلی</label><textarea name="timeline_note" data-label="توضیح زمان‌بندی" placeholder="اگر تاریخ به رویداد خاصی وابسته است بنویسید"></textarea></div></div>
+</section>
+
+<section class="step" data-title="جمع‌بندی">
+<h2>۸) جمع‌بندی نهایی</h2><div class="lead">در پایان، مهم‌ترین انتظار و هر نکته‌ای که در سؤال‌های قبل جا افتاده را بنویسید.</div>
+<div class="q"><label class="qt">مهم‌ترین انتظارتان از نسخه جدید چیست؟</label><textarea name="expectation" data-label="مهم‌ترین انتظار از نسخه جدید" placeholder="اگر فقط یک نتیجه بخواهید، آن چیست؟"></textarea><div class="note"><label>توضیح تکمیلی</label><textarea name="expectation_note" data-label="توضیح انتظار اصلی" placeholder="مثلاً پایداری بیشتر، ظاهر حرفه‌ای، فروش بهتر دستگاه یا کاهش مشکلات پشتیبانی"></textarea></div></div>
+<div class="q"><label class="qt">هر توضیح دیگری که لازم است قبل از شروع بدانیم</label><textarea name="final_note" data-label="توضیحات نهایی" placeholder="توضیحات آزاد"></textarea><div class="note"><label>فایل‌هایی که جداگانه ارسال می‌کنید</label><textarea name="files_to_send" data-label="فایل‌های قابل ارسال" placeholder="پروتکل، سورس قدیمی، فایل اسکن، لوگو، ویدئو و..."></textarea></div></div>
+<div class="q"><label class="qt">نام و شماره تماس</label><input type="text" name="contact" data-label="اطلاعات تماس" placeholder="اختیاری"><div class="note"><label>توضیح تکمیلی</label><textarea name="contact_note" data-label="توضیح تماس" placeholder="روش ترجیحی ارتباط یا زمان مناسب تماس"></textarea></div></div>
+<p class="muted">بعد از تکمیل، روی «ساخت خلاصه پاسخ‌ها» بزنید. می‌توانید نتیجه را کپی کنید، از طریق تلگرام بفرستید، فایل متنی بگیرید یا PDF ذخیره کنید.</p>
+<button type="button" class="success" id="makeSummary">ساخت خلاصه پاسخ‌ها</button>
+<div id="resultBox" class="hidden"><h3 style="margin-top:18px">خلاصه پاسخ‌ها</h3><div id="summary" class="summary"></div><div class="actions">
+<button type="button" class="secondary" id="copyBtn">کپی پاسخ‌ها</button>
+<button type="button" class="tg" id="tgBtn">ارسال در تلگرام</button>
+<button type="button" class="secondary" id="downloadBtn">دانلود فایل متنی</button>
+<button type="button" class="secondary" onclick="window.print()">چاپ / ذخیره PDF</button></div></div>
+</section>
+
+<div class="actions"><button type="button" class="secondary hidden" id="prev">مرحله قبل</button><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="warn" id="clearBtn">پاک کردن پاسخ‌های ذخیره‌شده</button><button type="button" class="primary" id="next">مرحله بعد</button></div></div>
+</form></div></div>
+
+<script>
+const form=document.getElementById('form'),steps=[...document.querySelectorAll('.step')];let idx=0;
+const bar=document.getElementById('bar'),counter=document.getElementById('counter'),prev=document.getElementById('prev'),next=document.getElementById('next'),save=document.getElementById('saveState');
+function show(){steps.forEach((s,i)=>s.classList.toggle('active',i===idx));bar.style.width=((idx+1)/steps.length*100)+'%';counter.textContent='مرحله '+(idx+1)+' از '+steps.length+' — '+steps[idx].dataset.title;prev.classList.toggle('hidden',idx===0);next.classList.toggle('hidden',idx===steps.length-1);window.scrollTo({top:0,behavior:'smooth'})}
+next.onclick=()=>{if(idx<steps.length-1){idx++;show()}};prev.onclick=()=>{if(idx>0){idx--;show()}};
+function data(){const o={};form.querySelectorAll('input,textarea,select').forEach(e=>{if(!e.name)return;if(e.type==='checkbox'){if(!o[e.name])o[e.name]=[];if(e.checked)o[e.name].push(e.value)}else if(e.type==='radio'){if(e.checked)o[e.name]=e.value}else o[e.name]=e.value});return o}
+function restore(o){form.querySelectorAll('input,textarea,select').forEach(e=>{if(!e.name)return;const v=o[e.name];if(e.type==='checkbox')e.checked=Array.isArray(v)&&v.includes(e.value);else if(e.type==='radio')e.checked=v===e.value;else if(v!==undefined)e.value=v})}
+let t;function autosave(){clearTimeout(t);t=setTimeout(()=>{localStorage.setItem('device_app_requirements_v3',JSON.stringify(data()));save.textContent='پاسخ‌ها ذخیره شد';setTimeout(()=>save.textContent='پاسخ‌ها به‌صورت خودکار روی همین دستگاه ذخیره می‌شوند.',1200)},250)}
+form.addEventListener('input',autosave);form.addEventListener('change',autosave);try{const s=localStorage.getItem('device_app_requirements_v3');if(s)restore(JSON.parse(s))}catch(e){}
+document.getElementById('clearBtn').onclick=()=>{if(confirm('همه پاسخ‌های ذخیره‌شده پاک شوند؟')){localStorage.removeItem('device_app_requirements_v3');form.reset();location.reload()}};
+function summary(){const d=data();let out='فرم جامع نیازسنجی نسخه جدید اپلیکیشن دستگاه\n================================================\n\n';steps.forEach((step,i)=>{out+=(i+1)+') '+step.dataset.title+'\n------------------------------\n';const els=[...step.querySelectorAll('input,textarea,select')];const names=[...new Set(els.map(x=>x.name).filter(Boolean))];names.forEach(n=>{const v=d[n];const e=els.find(x=>x.name===n);const label=e?.dataset.label||n;if(Array.isArray(v)&&v.length)out+='• '+label+': '+v.join('، ')+'\n';else if(typeof v==='string'&&v.trim())out+='• '+label+': '+v.trim()+'\n'});out+='\n'});return out+'— پایان پاسخ‌ها —'}
+document.getElementById('makeSummary').onclick=()=>{document.getElementById('summary').textContent=summary();document.getElementById('resultBox').classList.remove('hidden');document.getElementById('resultBox').scrollIntoView({behavior:'smooth'})};
+document.getElementById('copyBtn').onclick=async()=>{const x=summary();try{await navigator.clipboard.writeText(x);alert('پاسخ‌ها کپی شد.')}catch(e){prompt('متن را کپی کنید:',x)}};
+document.getElementById('tgBtn').onclick=()=>window.open('https://t.me/share/url?url=&text='+encodeURIComponent(summary()),'_blank');
+document.getElementById('downloadBtn').onclick=()=>{const b=new Blob([summary()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='device-app-requirements.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+show();
+</script>
+</body></html>
